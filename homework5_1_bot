@@ -1,0 +1,29 @@
+import random
+print('На столе лежит 2021 конфета. За один ход можно забрать не более 28 конфет. Выигрывает тот, кто заберет последние конфеты.')
+num_of_sweets = 2021
+
+while num_of_sweets>0:
+    while True:
+        move1 = int(input('Введите количество конфет, которое вы хотите взять: '))
+        try:
+            if move1>0 and move1<=28 and num_of_sweets-move1>=0:
+                break
+            else:
+                print('Ошибка: введено количество конфет больше 28 или меньше 0, либо число конфет, оставшееся на столе, меньше 0.')
+        except:
+            print('Попробуй еще раз')
+    num_of_sweets-=move1
+    if num_of_sweets==0:
+        print('Вы выиграли!')
+        exit()
+    else:
+        print('Осталось', num_of_sweets, 'конфет')
+    if num_of_sweets>28:
+        move2 = random.randint(1,28)
+        print(f'\nБот ввел', move2, 'конфет')
+        num_of_sweets-=move2
+        print('Осталось', num_of_sweets, 'конфет')
+    else:
+        print(f'\nБот ввел', num_of_sweets, 'конфет')
+        print('Бот выиграл')
+        exit()
